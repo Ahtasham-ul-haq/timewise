@@ -2,6 +2,14 @@
   @tailwind components;
   @tailwind utilities;
 
+
+.cl-internal-1yphags, .cl-userButtonPopoverActionButton {
+  color: #fff;  
+}
+.cl-internal-2im6sq[data-variant="outline"] {
+  border: 1px solid gray;
+}
+
   @layer base {
     :root {
       --background: 0 0% 100%;
