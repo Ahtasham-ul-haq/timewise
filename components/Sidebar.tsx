@@ -5,6 +5,7 @@ import { AlarmClock, LayoutDashboardIcon, TimerIcon } from "lucide-react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import React from "react";
+import { BsStopwatch } from "react-icons/bs";
 import { MdOutlineWidgets } from "react-icons/md";
 
 const sidebarLinks = [
@@ -21,9 +22,9 @@ const sidebarLinks = [
     color: "text-violet-500",
   },
   {
-    name: "Remainder",
-    icon: AlarmClock,
-    link: "/remainder",
+    name: "Stop Watch",
+    icon: BsStopwatch,
+    link: "/stopwatch",
     color: "text-pink-500",
   },
   {

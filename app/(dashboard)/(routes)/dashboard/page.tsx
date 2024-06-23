@@ -1,7 +1,8 @@
 "use client";
 
 import CountdownTimer from "@/components/CountdownTimer";
-import Timer from "@/components/Timer";
+import StopWatch from "@/components/StopWatch";
+import Timer from "@/components/StopWatch";
 import { useUser } from "@clerk/nextjs";
 import React, { useState } from "react";
 
@@ -41,8 +42,15 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="flex flex-col md:flex-row w-full items-center mt-10 border border-white">
-        <Timer />
+      <div className="grid grid-cols-2 grid-rows-1 gap-4 items-center mt-10">
+        <div>
+          <h2 className="text-3xl font-bold mb-2">Countdown Timer</h2>
+          <CountdownTimer timer={600} />
+        </div>
+        <div>
+          <h2 className="text-3xl font-bold mb-2">Stop Watch</h2>
+          <StopWatch />
+        </div>
       </div>
     </div>
   );

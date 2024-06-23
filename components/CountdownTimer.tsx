@@ -1,69 +1,68 @@
+"use client";
+
 import { useState, useEffect, useRef } from "react";
 
-const CountdownTimer: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState<number>(600); // 10 minutes in seconds
-  const [isRunning, setIsRunning] = useState<boolean>(false);
-  const timerRef = useRef<NodeJS.Timeout | null>(null);
+const CountdownTimer = ({ timer }: { timer: number }) => {
+  const initialTime = timer; // Initial time in seconds (e.g., 10 minutes)
+  const [timeLeft, setTimeLeft] = useState<number>(initialTime);
+  const [isActive, setIsActive] = useState<boolean>(false);
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
 
   useEffect(() => {
-    if (isRunning && timeLeft > 0) {
-      timerRef.current = setTimeout(() => {
-        setTimeLeft(timeLeft - 1);
+    if (isActive && timeLeft > 0) {
+      intervalRef.current = setInterval(() => {
+        setTimeLeft((time) => time - 1);
       }, 1000);
     } else if (timeLeft === 0) {
-      setIsRunning(false);
-      if (timerRef.current) clearTimeout(timerRef.current);
+      clearInterval(intervalRef.current!);
     }
+    return () => clearInterval(intervalRef.current!);
+  }, [isActive, timeLeft]);
 
-    return () => {
-      if (timerRef.current) clearTimeout(timerRef.current);
-    };
-  }, [isRunning, timeLeft]);
-
-  const startTimer = () => {
-    setIsRunning(true);
+  const handleStart = () => {
+    setIsActive(true);
   };
 
-  const stopTimer = () => {
-    setIsRunning(false);
-    if (timerRef.current) clearTimeout(timerRef.current);
+  const handleStop = () => {
+    setIsActive(false);
+    clearInterval(intervalRef.current!);
   };
 
-  const resetTimer = () => {
-    setIsRunning(false);
-    setTimeLeft(600);
-    if (timerRef.current) clearTimeout(timerRef.current);
+  const handleReset = () => {
+    setIsActive(false);
+    clearInterval(intervalRef.current!);
+    setTimeLeft(initialTime);
   };
 
-  const formatTime = (seconds: number): string => {
+  const formatTime = (seconds: number) => {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-      .toString()
-      .padStart(2, "0")}`;
+    return `${String(minutes).padStart(2, "0")}:${String(
+      remainingSeconds
+    ).padStart(2, "0")}`;
   };
 
   return (
-    <div className="flex w-[50%] flex-col items-center justify-center space-y-4">
-      <div className="text-4xl font-bold">{formatTime(timeLeft)}</div>
+    <div className="flex flex-col items-center p-4 rounded-lg shadow-md border border-gray-500">
+      <div className="text-4xl font-mono mb-4">{formatTime(timeLeft)}</div>
       <div className="flex space-x-4">
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          onClick={startTimer}
-          disabled={isRunning}
+          onClick={handleStart}
+          disabled={isActive}
         >
           Start
         </button>
         <button
           className="px-4 py-2 bg-red-500 text-white rounded hover:bg-red-600"
-          onClick={stopTimer}
-          disabled={!isRunning}
+          onClick={handleStop}
+          disabled={!isActive}
         >
           Stop
         </button>
         <button
           className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
-          onClick={resetTimer}
+          onClick={handleReset}
         >
           Reset
         </button>

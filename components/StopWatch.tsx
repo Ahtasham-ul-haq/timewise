@@ -1,6 +1,8 @@
+"use client";
+
 import React, { useState, useRef } from "react";
 
-const Timer: React.FC = () => {
+const StopWatch: React.FC = () => {
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -36,7 +38,7 @@ const Timer: React.FC = () => {
   };
 
   return (
-    <div className="w-[50%] flex flex-col items-center justify-center">
+    <div className="flex flex-col items-center justify-center border border-gray-500 py-4 rounded-lg">
       <div className="text-4xl font-mono mb-4">{formatTime(time)}</div>
       <div className="flex space-x-4">
         <button
@@ -64,4 +66,4 @@ const Timer: React.FC = () => {
   );
 };
 
-export default Timer;
+export default StopWatch;

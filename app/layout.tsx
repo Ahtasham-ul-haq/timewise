@@ -18,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <ClerkProvider
         appearance={{
           layout: {
@@ -40,7 +40,12 @@ export default function RootLayout({
           // enableSystem
           // disableTransitionOnChange
         >
-          <body className={cn("min-h-screen  bg-background", inter.className)}>
+          <body
+            className={cn(
+              "min-h-screen overflow-hidden bg-background",
+              inter.className
+            )}
+          >
             {children}
           </body>
         </ThemeProvider>
