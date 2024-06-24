@@ -42,7 +42,7 @@ const Dashboard = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 grid-rows-1 gap-4 items-center mt-10">
+      <div className="grid md:grid-cols-2 grid-rows-1 gap-4 items-center mt-10">
         <div>
           <h2 className="text-3xl font-bold mb-2">Countdown Timer</h2>
           <CountdownTimer timer={600} />

@@ -1,8 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import React, { useState, useRef } from "react";
 
 const StopWatch: React.FC = () => {
+  const pathname = usePathname();
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const intervalRef = useRef<NodeJS.Timeout | null>(null);
@@ -38,9 +40,17 @@ const StopWatch: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center border border-gray-500 py-4 rounded-lg">
-      <div className="text-4xl font-mono mb-4">{formatTime(time)}</div>
-      <div className="flex space-x-4">
+    <div
+      className={`group flex flex-col items-center justify-center ${
+        pathname === "/dashboard" && "border"
+      }  py-4 rounded-lg`}
+    >
+      <div className="text-4xl font-sans mb-4">{formatTime(time)}</div>
+      <div
+        className={`space-x-4 hidden group-hover:flex ${
+          pathname === "/dashboard" ? "!flex" : ""
+        }`}
+      >
         <button
           onClick={startTimer}
           disabled={isRunning}

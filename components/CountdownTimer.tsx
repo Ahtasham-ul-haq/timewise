@@ -1,8 +1,10 @@
 "use client";
 
+import { usePathname } from "next/navigation";
 import { useState, useEffect, useRef } from "react";
 
 const CountdownTimer = ({ timer }: { timer: number }) => {
+  const pathname = usePathname();
   const initialTime = timer; // Initial time in seconds (e.g., 10 minutes)
   const [timeLeft, setTimeLeft] = useState<number>(initialTime);
   const [isActive, setIsActive] = useState<boolean>(false);
@@ -43,9 +45,13 @@ const CountdownTimer = ({ timer }: { timer: number }) => {
   };
 
   return (
-    <div className="flex flex-col items-center p-4 rounded-lg shadow-md border border-gray-500">
+    <div className="group flex flex-col items-center p-4 rounded-lg shadow-md border border-gray-500">
       <div className="text-4xl font-mono mb-4">{formatTime(timeLeft)}</div>
-      <div className="flex space-x-4">
+      <div
+        className={`space-x-4 hidden group-hover:flex ${
+          pathname === "/dashboard" ? "!flex" : ""
+        }`}
+      >
         <button
           className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           onClick={handleStart}

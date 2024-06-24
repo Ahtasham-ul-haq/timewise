@@ -38,11 +38,17 @@ const CountdownTimerPage = () => {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold text-center">Countdown Timer</h1>
-      <div className="grid grid-cols-2 grid-rows-1 gap-4 p-4">
-        <CountdownTimer timer={500} />
-        <CountdownTimer timer={500} />
-        <CountdownTimer timer={500} />
+      <h1 className="text-3xl font-bold text-center">Countdown Timers</h1>
+      <div className="grid grid-cols-1 justify-center md:grid-cols-2 grid-rows-1 gap-4 p-4">
+        <CountdownTimer timer={120} />
+        <CountdownTimer timer={300} />
+        <CountdownTimer timer={600} />
+        <CountdownTimer timer={900} />
+        <CountdownTimer timer={1200} />
+        <CountdownTimer timer={1800} />
+        <CountdownTimer timer={2400} />
+        <CountdownTimer timer={3000} />
+        <CountdownTimer timer={3600} />
       </div>
     </div>
   );

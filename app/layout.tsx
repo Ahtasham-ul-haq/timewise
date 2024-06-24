@@ -34,21 +34,21 @@ export default function RootLayout({
           },
         }}
       >
-        <ThemeProvider
+        {/* <ThemeProvider
           attribute="class"
           defaultTheme="dark"
           // enableSystem
           // disableTransitionOnChange
+        > */}
+        <body
+          className={cn(
+            "min-h-screen overflow-hidden bg-background",
+            inter.className
+          )}
         >
-          <body
-            className={cn(
-              "min-h-screen overflow-hidden bg-background",
-              inter.className
-            )}
-          >
-            {children}
-          </body>
-        </ThemeProvider>
+          {children}
+        </body>
+        {/* </ThemeProvider> */}
       </ClerkProvider>
     </html>
   );
