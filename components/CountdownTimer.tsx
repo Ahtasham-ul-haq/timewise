@@ -45,15 +45,15 @@ const CountdownTimer = ({ timer }: { timer: number }) => {
   };
 
   return (
-    <div className="group flex flex-col items-center p-4 rounded-lg shadow-md border border-gray-500">
-      <div className="text-4xl font-mono mb-4">{formatTime(timeLeft)}</div>
+    <div className="group flex flex-col items-center p-4 rounded-lg shadow-md border">
+      <div className="text-4xl font-sans mb-4">{formatTime(timeLeft)}</div>
       <div
         className={`space-x-4 hidden group-hover:flex ${
           pathname === "/dashboard" ? "!flex" : ""
         }`}
       >
         <button
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="px-4 py-2 bg-green-500 text-white rounded hover:bg-green-600"
           onClick={handleStart}
           disabled={isActive}
         >
@@ -67,7 +67,7 @@ const CountdownTimer = ({ timer }: { timer: number }) => {
           Stop
         </button>
         <button
-          className="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600"
+          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
           onClick={handleReset}
         >
           Reset

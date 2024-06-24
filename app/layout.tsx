@@ -42,7 +42,7 @@ export default function RootLayout({
         > */}
         <body
           className={cn(
-            "min-h-screen overflow-hidden bg-background",
+            "min-h-screen md:overflow-hidden bg-background",
             inter.className
           )}
         >

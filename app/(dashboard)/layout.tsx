@@ -10,7 +10,7 @@ const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
         <Sidebar />
       </div>
       <main className="md:pl-64 py-4">
-        {/* <Topbar /> */}
+        <Topbar />
         {children}
       </main>
     </div>

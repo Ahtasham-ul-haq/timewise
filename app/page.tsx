@@ -12,17 +12,17 @@ import { BsArrowRightShort } from "react-icons/bs";
 export default function Home() {
   const { user } = useUser();
   return (
-    <div className="w-full h-screen px-12 py-8 overflow-hidden">
+    <div className="w-full md:h-screen h-full px-4 md:px-12 py-8 md:overflow-hidden">
       <Navbar />
-      <div className="flex flex-col justify-center gap-4 items-center w-full h-full text-center">
-        <h1 className=" text-[40px] text-3xl md:text-5xl lg:text-6xl leading-snug tracking-tighter font-bold">
-          The most comprehensive <br />{" "}
+      <div className="flex flex-col justify-center mt-10 gap-4 items-center w-full h-full text-center">
+        <h1 className=" text-[40px] text2xl md:text-5xl lg:text-6xl leading-snug tracking-tighter font-bold">
+          The most comprehensive <br className="md:block hidden" />{" "}
           <span className="text-[#d1b0ed]">Time Management</span> Platform
         </h1>
         <p className="text-muted-foreground">
-          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Commodi illo
-          adipisci <br /> animi natus ipsam corporis exercitationem provident
-          consectetur explicabo similique?
+          A time management web app to track events, monitor habits,
+          <br className="md:block hidden" />
+          set countdowns, time tracking and much more
         </p>
         <Link href={!user ? "/sign-up" : "/dashboard"}>
           <Button>

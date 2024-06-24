@@ -8,7 +8,7 @@ import React from "react";
 import { BsStopwatch } from "react-icons/bs";
 import { MdOutlineWidgets } from "react-icons/md";
 
-const sidebarLinks = [
+export const sidebarLinks = [
   {
     name: "Dashboard",
     icon: LayoutDashboardIcon,
@@ -55,6 +55,7 @@ const Sidebar = () => {
         {sidebarLinks.map((link) => {
           return (
             <Link
+              key={link.link}
               href={link.link}
               className={`flex gap-4 px-4 py-3 hover:bg-background rounded-lg items-center ${
                 pathname === link.link ? "bg-background" : ""

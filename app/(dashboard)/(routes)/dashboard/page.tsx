@@ -31,7 +31,7 @@ const Dashboard = () => {
   return (
     <div className="px-4">
       <div className="h-[300px] w-full rounded-[20px] bg-hero bg-cover">
-        <div className="h-full flex flex-col justify-between  py-6 md:px-5 md:py-8 lg:p-11">
+        <div className="h-full flex flex-col justify-between px-4 py-6 md:px-5 md:py-8 lg:p-11">
           <h2 className="glassmorphism max-w-[270px] rounded py-2 text-2xl font-semibold">
             Welcome, {user?.firstName}
           </h2>

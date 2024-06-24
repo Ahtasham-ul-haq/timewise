@@ -43,14 +43,10 @@ const StopWatch: React.FC = () => {
     <div
       className={`group flex flex-col items-center justify-center ${
         pathname === "/dashboard" && "border"
-      }  py-4 rounded-lg`}
+      } ${pathname === "/stopwatch" && "h-screen"}  py-4 rounded-lg`}
     >
       <div className="text-4xl font-sans mb-4">{formatTime(time)}</div>
-      <div
-        className={`space-x-4 hidden group-hover:flex ${
-          pathname === "/dashboard" ? "!flex" : ""
-        }`}
-      >
+      <div className={`space-x-4 flex`}>
         <button
           onClick={startTimer}
           disabled={isRunning}
